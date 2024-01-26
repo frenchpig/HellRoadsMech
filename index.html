@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Aplicación Electron</title>
+  <link href="./src/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./src/css/styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="row">
+    <div class="col-12">
+      <h1>HellRoads</h1>
+    </div>
+  </div>
+  <div class="row border-top border-bottom">
+    <div class="col mx-2 my-2">
+      <h3>
+        Tipo de vehiculo: 
+      </h3>
+    </div>
+    <div class="col mx-2">
+      <select class="form-select my-2" id="typeselect" aria-label="Floating label select example">
+        <option selected disabled value="0">Selecciona un tipo de vehiculo</option>
+        <option value="concesionario">Concesionario</option>
+        <option value="moto">Motos</option>
+        <option value="camioneta">Camionetas</option>
+        <option value="deportivo">Deportivos</option>
+        <option value="donador">Donador</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col mx-2 my-2">
+      <h3>
+        Modificaciones
+      </h3>
+    </div>
+  </div>
+
+  <div class="row border-bottom">
+    <div class="col-3">
+      <button type="button" class="btn btn-primary m-2 w-75 modbtn" id="motorbtn">Motor</button>
+    </div>
+    <div class="col-3">
+      <button type="button" class="btn btn-primary m-2 w-75 modbtn" id="frenosbtn">Frenos</button>
+    </div>
+    <div class="col-3">
+      <button type="button" class="btn btn-primary m-2 w-75 modbtn" id="suspensionbtn">Suspension</button>
+    </div>
+    <div class="col-3">
+      <button type="button" class="btn btn-primary m-2 w-75 modbtn" id="trasmisionbtn">Trasmision</button>
+    </div>
+    <div class="col-3">
+      <button type="button" class="btn btn-primary m-2 w-75 modbtn" id="turbobtn">Turbo</button>
+    </div>
+    <div class="col-3">
+      <button type="button" class="btn btn-primary m-2 w-75 modbtn" id="full_tuningbtn">Full Tuning</button>
+    </div>
+    <div class="col-3">
+      <button type="button" class="btn btn-primary m-2 w-75 modbtn" id="esteticobtn">Estetico</button>
+    </div>
+    <div class="col-3">
+      <button type="button" class="btn btn-primary m-2 w-75 modbtn" id="reparacion_tallerbtn" disabled>Reparacion</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <h1>Factura</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="card m-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Modificacion</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody id="tablebody">
+            <tr>
+              <th scope="row">1</th>
+              <td>Reparacion</td>
+              <td>$250.000</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Motor</td>
+              <td>$1.000.000</td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td class="fw-bold" >Total</td>
+              <td id="numtotal">$1.250.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="./src/js/bootstrap.bundle.min.js"></script>
+  <script src="./src/js/functions.js"></script>
+</body>
+</html>
