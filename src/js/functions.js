@@ -224,3 +224,53 @@ function deleteFromDetail(id){
   loadTable(detail);
   save("detalle",detail);
 }
+
+function billMaker(){
+  //clientName vehicleTag
+  let name = document.getElementById("clientName").value;
+  if (name.length == 0) {
+    alert("Faltan datos del cliente");
+    return;
+  }
+  let tag = document.getElementById("vehicleTag").value;
+  let type = document.getElementById("typeselect").value;
+  if (tag.length == 0 || type=="0") {
+    alert("Faltan datos del vehiculo");
+    return;
+  }
+
+  let bill = read("detalle");
+  if (bill.length == 0){
+    alert("No se han realizado modificaciones");
+    return;
+  }
+  let total = 0;
+  let modStr = '';
+  let esteticoCounter = 0;
+
+  bill.forEach(element => {
+    total += element.valor
+    if (element.nombre!="estetico") {
+      modStr = modStr + ", " + element.nombre.charAt(0).toUpperCase() + element.nombre.slice(1);
+    }
+    if (element.nombre=="estetico") {
+      esteticoCounter += 1;
+    }
+  });
+  modStr = modStr.substring(2);
+  if (esteticoCounter>1){
+    modStr = modStr + ", " + esteticoCounter + " Esteticos"
+  }
+  if(esteticoCounter==1){
+    modStr = modStr + ", " + esteticoCounter + " Estetico"
+  }
+
+  modStr = modStr + " " + CLPformat(total)
+  type = type.charAt(0).toUpperCase() + type.slice(1);
+
+  console.log(name);
+  console.log(tag);
+  console.log(modStr);
+  console.log(type);
+
+}

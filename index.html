@@ -31,6 +31,22 @@
     </div>
   </div>
 
+  <div class="row border-bottom d-flex justify-content-center">
+    <div class="col-12">
+      <h1 class="m-2">Datos Cliente</h1>
+    </div>
+    <div class="col-4 m-2">
+      <!-- nombre -->
+      <label for="clientName">Nombre del Cliente</label>
+      <input type="text" class="form-control" id="clientName" placeholder="Ingrese el nombre del cliente">
+    </div>
+    <div class="col-4 m-2">
+      <!-- patente -->
+      <label for="vehicleTag">Patente del Vehiculo</label>
+      <input type="text" class="form-control" id="vehicleTag" placeholder="Ingrese patente del vehiculo">
+    </div>
+  </div>
+
   <div class="row">
     <div class="col mx-2 my-2">
       <h3 class="m-2">
@@ -96,7 +112,7 @@
       <a class="btn btn-danger w-75" id="btnClean" onClick="clearDetail()">Limpiar</a>
     </div>
     <div class="col col-6 d-flex justify-content-center">
-      <a class="btn btn-success w-75" id="btnPay">Factura</a>
+      <a class="btn btn-success w-75" id="btnPay" onClick="billMaker()">Factura</a>
     </div>
   </div>
 
