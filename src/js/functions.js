@@ -58,7 +58,7 @@ function save (key, array){
 }
 
 document.addEventListener("DOMContentLoaded", function(){
-  loadTable(read("detalle"));
+  clearDetail();
 
   let select = document.getElementById("typeselect");
   select.addEventListener("change", function(event){
@@ -146,8 +146,8 @@ function loadTable(detail){
     let tr = document.createElement("tr");
     let th = document.createElement("th");
     th.setAttribute("scope","row");
-    index = detail.indexOf(element)+1;
-    th.textContent = index;
+    index = detail.indexOf(element);
+    th.textContent = index + 1;
     let td1 = document.createElement("td");
     let nombre
     if(element.nombre!="full_tuning"){
@@ -160,12 +160,25 @@ function loadTable(detail){
     let precio = CLPformat(element.valor)
     td2.textContent= precio;
 
+    let td3 = document.createElement("td");
+    let btndelete = document.createElement("a");
+    btndelete.classList.add("btn", "btn-danger", "btndelete");
+    btndelete.id = "btndelete"+index;
+    btndelete.innerHTML = 'Eliminar';
+    btndelete.addEventListener("click", function(event){
+      let id = event.target.getAttribute("id");
+      deleteFromDetail(id);
+    });
+    td3.appendChild(btndelete)
+
     tr.appendChild(th);
     tr.appendChild(td1);
+    tr.appendChild(td3);
     tr.appendChild(td2);
 
     body.appendChild(tr);
     total += element.valor;
+
   });
   let tr = document.createElement("tr");
   let th = document.createElement("th");
@@ -176,9 +189,11 @@ function loadTable(detail){
   let td2 = document.createElement("td");
   let precio = CLPformat(total)
   td2.textContent= precio;
+  let td3 = document.createElement("td");
 
   tr.appendChild(th);
   tr.appendChild(td1);
+  tr.appendChild(td3);
   tr.appendChild(td2);
 
   body.appendChild(tr);
@@ -199,4 +214,13 @@ function clearDetail(){
 function CLPformat (number) {
   var formatedNumber = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   return "$"+formatedNumber
+}
+
+function deleteFromDetail(id){
+  let curatedID = id.replace(/\D/g, "");
+  console.log(curatedID);
+  let detail = read("detalle");
+  detail.splice(curatedID,1);
+  loadTable(detail);
+  save("detalle",detail);
 }

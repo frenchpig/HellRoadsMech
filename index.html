@@ -10,12 +10,12 @@
 <body>
   <div class="row">
     <div class="col-12">
-      <h1>HellRoads</h1>
+      <h1 class="m-2">HellRoads</h1>
     </div>
   </div>
   <div class="row border-top border-bottom">
     <div class="col mx-2 my-2">
-      <h3>
+      <h3 class="m-2">
         Tipo de vehiculo: 
       </h3>
     </div>
@@ -33,13 +33,13 @@
 
   <div class="row">
     <div class="col mx-2 my-2">
-      <h3>
+      <h3 class="m-2">
         Modificaciones
       </h3>
     </div>
   </div>
 
-  <div class="row border-bottom">
+  <div class="row border-bottom m-2">
     <div class="col-3">
       <button type="button" class="btn btn-primary m-2 w-75 modbtn" id="motorbtn">Motor</button>
     </div>
@@ -80,28 +80,23 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Modificacion</th>
+              <th scope="col"></th>
               <th scope="col">Precio</th>
             </tr>
           </thead>
           <tbody id="tablebody">
-            <tr>
-              <th scope="row">1</th>
-              <td>Reparacion</td>
-              <td>$250.000</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Motor</td>
-              <td>$1.000.000</td>
-            </tr>
-            <tr>
-              <th scope="row"></th>
-              <td class="fw-bold" >Total</td>
-              <td id="numtotal">$1.250.000</td>
-            </tr>
           </tbody>
         </table>
       </div>
+    </div>
+  </div>
+
+  <div class="row m-2">
+    <div class="col col-6 d-flex justify-content-center">
+      <a class="btn btn-danger w-75" id="btnClean" onClick="clearDetail()">Limpiar</a>
+    </div>
+    <div class="col col-6 d-flex justify-content-center">
+      <a class="btn btn-success w-75" id="btnPay">Factura</a>
     </div>
   </div>
 
