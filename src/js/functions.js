@@ -86,12 +86,17 @@ function addToDetail(modification){
     return;
   }
   let mods;
-  precios.forEach(element => {
-    if(element.tipo===type){
-      mods = element.mod;
-      return;
-    }
-  });
+  if(modification=="reparacion_taller"){
+    mods=extra;
+  }else{
+    precios.forEach(element => {
+      if(element.tipo===type){
+        mods = element.mod;
+        return;
+      }
+    });
+  }
+  
   let detail;
   mods.forEach(element=> {
     if(element.nombre===modification){
@@ -152,8 +157,10 @@ function loadTable(detail){
     let nombre
     if(element.nombre!="full_tuning"){
       nombre = element.nombre.charAt(0).toUpperCase() + element.nombre.slice(1);
-    }else{
-      nombre="Full Tuning"
+    }else if (element.nombre=="full_tuning") {
+      nombre="Full Tuning";
+    } else if (element.nombre=="reparacion_taller"){
+      nombre="Reparacion en Taller";
     }
     td1.textContent = nombre;
     let td2 = document.createElement("td");
@@ -250,8 +257,12 @@ function billMaker(){
 
   bill.forEach(element => {
     total += element.valor
-    if (element.nombre!="estetico") {
+    if (element.nombre!="estetico"&&element.nombre!="full_tuning"&&element.nombre!="reparacion_taller") {
       modStr = modStr + ", " + element.nombre.charAt(0).toUpperCase() + element.nombre.slice(1);
+    }else if (element.nombre!="estetico"&&element.nombre=="full_tuning"&&element.nombre!="reparacion_taller") {
+      modStr = ", Full Tuning";
+    }else if (element.nombre!="estetico"&&element.nombre!="full_tuning"&&element.nombre=="reparacion_taller"){
+      modStr = modStr + ", Reparacion";
     }
     if (element.nombre=="estetico") {
       esteticoCounter += 1;
@@ -268,9 +279,25 @@ function billMaker(){
   modStr = modStr + " " + CLPformat(total)
   type = type.charAt(0).toUpperCase() + type.slice(1);
 
+  let printedbill = `➥ 𝗡𝗼𝗺𝗯𝗿𝗲 𝗜𝗖: ${name}\n ➥ 𝗧𝗶𝗽𝗼 𝗱𝗲 𝗺𝗼𝗱𝗶𝗳𝗶𝗰𝗮𝗰𝗶𝗼𝗻 𝘆 𝗽𝗿𝗲𝗰𝗶𝗼 : ${modStr}\n➥ 𝗠𝗼𝗱𝗲𝗹𝗼 𝗩𝗲𝗵𝗶𝗰𝘂𝗹𝗼 : ${type}\n➥ 𝗣𝗮𝘁𝗲𝗻𝘁𝗲 𝗩𝗲𝗵𝗶𝗰𝘂𝗹𝗼: ${tag}`;
+
+  navigator.clipboard.writeText(printedbill)
+    .then(function(){
+      cleaner();
+      alert("Factura copiada en el portapapeles!");
+    });
+
   console.log(name);
   console.log(tag);
   console.log(modStr);
   console.log(type);
+  console.log(printedbill);
 
+}
+
+function cleaner(){
+  document.getElementById("typeselect").selectedIndex = 0;
+  document.getElementById("clientName").value = "";
+  document.getElementById("vehicleTag").value = "";
+  clearDetail();
 }
