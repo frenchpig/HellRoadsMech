@@ -154,8 +154,8 @@ function loadTable(detail){
     index = detail.indexOf(element);
     th.textContent = index + 1;
     let td1 = document.createElement("td");
-    let nombre
-    if(element.nombre!="full_tuning"){
+    let nombre;
+    if(element.nombre!="full_tuning"&&element.nombre!="reparacion_taller"){
       nombre = element.nombre.charAt(0).toUpperCase() + element.nombre.slice(1);
     }else if (element.nombre=="full_tuning") {
       nombre="Full Tuning";
