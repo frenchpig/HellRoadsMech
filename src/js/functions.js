@@ -269,11 +269,17 @@ function billMaker(){
     }
   });
   modStr = modStr.substring(2);
-  if (esteticoCounter>1){
+  if (esteticoCounter>1 && modStr.length>0){
     modStr = modStr + ", " + esteticoCounter + " Esteticos"
   }
-  if(esteticoCounter==1){
+  if(esteticoCounter==1 && modStr.length>0){
     modStr = modStr + ", " + esteticoCounter + " Estetico"
+  }
+  if (esteticoCounter>1 && modStr.length==0){
+    modStr = esteticoCounter + " Esteticos"
+  }
+  if(esteticoCounter==1 && modStr.length==0){
+    modStr = esteticoCounter + " Estetico"
   }
 
   modStr = modStr + " " + CLPformat(total)
