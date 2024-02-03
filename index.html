@@ -25,9 +25,11 @@
         <div class="modal-body">
           <label for="workerName">Nombre del Trabajador:</label>
           <input type="text" class="form-control" id="workerName" placeholder="Ingrese el nombre del trabajador">
+          <label for="workerName">Cargo:</label>
+          <input type="text" class="form-control" id="workerJob" placeholder="Ingrese el nombre del trabajador">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Copiar!</button>
+          <button type="button" class="btn btn-primary" id="btnGetHours" data-bs-dismiss="modal">Copiar!</button>
         </div>
       </div>
     </div>
@@ -148,5 +150,6 @@
 
   <script src="./src/js/bootstrap.bundle.min.js"></script>
   <script src="./src/js/functions.js"></script>
+  <script src="./src/js/schedule.js"></script>
 </body>
 </html>
