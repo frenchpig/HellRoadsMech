@@ -15,6 +15,7 @@
   </div>
 
   <!-- Modals -->
+  <!-- Horario -->
   <div id="hourmodal" class="modal fade" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -34,6 +35,26 @@
       </div>
     </div>
   </div>
+  <!-- Kits -->
+  <div id="kitsmodal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Venta de Kits!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label for="workerName">Nombre de Cliente:</label>
+          <input type="text" class="form-control" id="clientNamekts" placeholder="Ingrese el nombre del cliente">
+          <label for="workerName">Hora:</label>
+          <input type="text" class="form-control" id="orderHour" placeholder="Ingrese la hora de compra">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="btnKitsCopy" data-bs-dismiss="modal">Copiar!</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- End Modals -->
 
   <div class="row border-top ">
@@ -43,7 +64,7 @@
     <div class="col m-2"><button type="button" class="btn btn-success w-75" data-bs-toggle="modal" data-bs-target="#hourmodal">
       Apertura Horario
     </button></div>
-    <div class="col m-2"><a class="btn btn-success w-75" id="kitsbtn">Kits</a></div>
+    <div class="col m-2"><a class="btn btn-success w-75"  id="kitsbtn" data-bs-toggle="modal" data-bs-target="#kitsmodal">Kits</a></div>
   </div>
   <div class="row border-top border-bottom">
     <div class="col mx-2 my-2">
@@ -151,5 +172,6 @@
   <script src="./src/js/bootstrap.bundle.min.js"></script>
   <script src="./src/js/functions.js"></script>
   <script src="./src/js/schedule.js"></script>
+  <script src="./src/js/kits.js"></script>
 </body>
 </html>
